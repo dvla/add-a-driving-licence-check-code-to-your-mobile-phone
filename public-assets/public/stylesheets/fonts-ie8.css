@@ -1,0 +1,19 @@
+/* Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */
+
+@font-face {
+    font-family: 'nta';
+    src: url(https://djb1962t8apu5.cloudfront.net/static/nta-minimal-fast.eot#) format("embedded-opentype");
+    font-weight: normal;
+    font-style: normal
+}
+@font-face {
+    font-family: 'nta';
+    src: url(https://djb1962t8apu5.cloudfront.net/static/nta-b.eot#) format("embedded-opentype");
+    font-weight: bold
+}
+@font-face {
+    font-family: 'ntatabularnumbers';
+    src: url(https://djb1962t8apu5.cloudfront.net/static/NTATabularNumbers-Light.eot#) format("embedded-opentype");
+    font-weight: normal;
+    font-style: normal
+}

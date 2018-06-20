@@ -1,0 +1,117 @@
+@(sessionCookieExpiryMinutes: Option[Long])(implicit request: RequestHeader)
+@import views.html.helper._
+
+@templates.digitalLicence(Messages("views.cookies.title")) {
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+
+
+            <h1 class="heading-large">@Html(Messages("views.cookies.title"))</h1>
+
+
+        <p>@Html(Messages("views.cookies.description.1"))</p>
+        <p>@Html(Messages("views.cookies.description.2"))</p>
+
+        <ul class="list list-bullet">
+            <li>@Html(Messages("views.cookies.description.2.1"))</li>
+            <li>@Html(Messages("views.cookies.description.2.2"))</li>
+        </ul>
+
+        <p>@Html(Messages("views.cookies.description.3"))</p>
+        <p>@Html(Messages("views.cookies.description.4"))</p>
+        <p>@Html(Messages("views.cookies.description.5"))</p>
+
+        <h2 class="heading-large">@Html(Messages("views.cookies.googleAnalytics.title"))</h2>
+        <p>@Html(Messages("views.cookies.googleAnalytics.description.1"))</p>
+        <p>@Html(Messages("views.cookies.googleAnalytics.description.2"))</p>
+        <ul class="list list-bullet">
+            <li>@Html(Messages("views.cookies.googleAnalytics.description.2.1"))</li>
+            <li>@Html(Messages("views.cookies.googleAnalytics.description.2.2"))</li>
+            <li>@Html(Messages("views.cookies.googleAnalytics.description.2.3"))</li>
+        </ul>
+        <table>
+            <tr>
+                <th>@Html(Messages("views.cookies.googleAnalytics.table.header.name"))</th>
+                <th>@Html(Messages("views.cookies.googleAnalytics.table.header.description"))</th>
+                <th>@Html(Messages("views.cookies.googleAnalytics.table.header.time"))</th>
+            </tr>
+            <tr>
+                <td>@Html(Messages("views.cookies.googleAnalytics.table.row.1.name"))</td>
+                <td>@Html(Messages("views.cookies.googleAnalytics.table.row.1.description"))</td>
+                <td>@Html(Messages("views.cookies.googleAnalytics.table.row.1.time"))</td>
+            </tr>
+            <tr>
+                <td>@Html(Messages("views.cookies.googleAnalytics.table.row.2.name"))</td>
+                <td>@Html(Messages("views.cookies.googleAnalytics.table.row.2.description"))</td>
+                <td>@Html(Messages("views.cookies.googleAnalytics.table.row.2.time"))</td>
+            </tr>
+        </table>
+
+        <h2 class="heading-medium">@Html(Messages("views.cookies.sessionCookies.title"))</h2>
+        <p>@Html(Messages("views.cookies.sessionCookies.description"))</p>
+
+        <table>
+            <tr>
+                <th>@Html(Messages("views.cookies.sessionCookies.table.header.name"))</th>
+                <th>@Html(Messages("views.cookies.sessionCookies.table.header.description"))</th>
+                <th>@Html(Messages("views.cookies.sessionCookies.table.header.expires"))</th>
+            </tr>
+            <tr>
+                <td>@Html(Messages("views.cookies.sessionCookies.table.row.1.name"))</td>
+                <td>@Html(Messages("views.cookies.sessionCookies.table.row.1.description"))</td>
+                <td>
+                    @if(sessionCookieExpiryMinutes.isDefined) {
+                    @sessionCookieExpiryMinutes.get @Html(Messages("time.minute.plural"))
+                    } else {
+                    @Html(Messages("views.cookies.sessionCookies.table.expires.endOfSession"))
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>@Html(Messages("views.cookies.sessionCookies.table.row.2.name"))</td>
+                <td>@Html(Messages("views.cookies.sessionCookies.table.row.2.description"))</td>
+                <td>@Html(Messages("views.cookies.sessionCookies.table.expires.endOfSession"))</td>
+            </tr>
+            <tr>
+                <td>@Html(Messages("views.cookies.sessionCookies.table.row.3.name"))</td>
+                <td>@Html(Messages("views.cookies.sessionCookies.table.row.3.description"))</td>
+                <td>@Html(Messages("views.cookies.sessionCookies.table.expires.endOfSession"))</td>
+            </tr>
+        </table>
+
+        <h2 class="heading-medium">@Html(Messages("views.cookies.webchatCookies.title"))</h2>
+        <p>@Html(Messages("views.cookies.webchatCookies.description"))</p>
+
+        <table>
+            <tr>
+                <th>@Html(Messages("views.cookies.webchatCookies.table.header.name"))</th>
+                <th>@Html(Messages("views.cookies.webchatCookies.table.header.description"))</th>
+                <th>@Html(Messages("views.cookies.webchatCookies.table.header.expires"))</th>
+            </tr>
+            <tr>
+                <td>@Html(Messages("views.cookies.webchatCookies.table.row.1.name"))</td>
+                <td>@Html(Messages("views.cookies.webchatCookies.table.row.1.description"))</td>
+                <td>@Html(Messages("views.cookies.webchatCookies.table.expires.endOfSession"))</td>
+            </tr>
+            <tr>
+                <td>@Html(Messages("views.cookies.webchatCookies.table.row.2.name"))</td>
+                <td>@Html(Messages("views.cookies.webchatCookies.table.row.2.description"))</td>
+                <td>@Html(Messages("views.cookies.webchatCookies.table.expires.10years"))</td>
+            </tr>
+            <tr>
+                <td>@Html(Messages("views.cookies.webchatCookies.table.row.3.name"))</td>
+                <td>@Html(Messages("views.cookies.webchatCookies.table.row.3.description"))</td>
+                <td>@Html(Messages("views.cookies.webchatCookies.table.expires.10years"))</td>
+            </tr>
+            <tr>
+                <td>@Html(Messages("views.cookies.webchatCookies.table.row.4.name"))</td>
+                <td>@Html(Messages("views.cookies.webchatCookies.table.row.4.description"))</td>
+                <td>@Html(Messages("views.cookies.webchatCookies.table.expires.endOfSession"))</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+}

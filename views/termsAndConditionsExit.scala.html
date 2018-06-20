@@ -1,0 +1,30 @@
+@(error: Option[String] = None,
+formData: Option[String] = None
+)(implicit lang: Lang,
+flash: Flash,
+session: play.api.mvc.Session,
+request: Request[AnyContent]
+)
+
+@import views.html.helper._
+
+
+@templates.digitalLicence(Messages("digital.licence.termsAndConditionsExit.title")) {
+
+@helpers.backLink()
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+
+        <div class="govuk-box-highlight grey">
+            <h1 class="heading-large">@Messages("digital.licence.termsAndConditionsExit.title")</h1>
+        </div>
+
+        <p>@Messages("digital.licence.termsAndConditionsExit.p1")</p>
+
+        <a href="https://www.gov.uk/" class="button">@Messages("Return to GOV.UK")</a>
+
+    </div>
+</div>
+
+}

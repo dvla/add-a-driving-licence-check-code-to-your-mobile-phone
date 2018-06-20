@@ -1,0 +1,39 @@
+/**
+    Contains form specific changes
+**/
+
+p.lead{
+	margin-top : 5px;
+	margin-bottom: 15px;
+	font-size: 21px;
+}
+
+label.lead{
+    display: block;
+    margin-bottom:15px;
+    font-size: 21px;
+}
+
+.field-large{
+	width: 400px !important;
+}
+
+.button-disabled, .button-disabled:hover{
+	background-color: rgb(150, 172, 169) !important;	
+}
+
+.control-group{
+	position: relative;
+}
+
+.shifted-control-group{
+	position: relative;
+	left: 485px;
+	top: -115px;
+	width: 400px;
+}
+
+.form-unit-smaller{
+	height: 180px;
+	margin-bottom: 20px;
+}

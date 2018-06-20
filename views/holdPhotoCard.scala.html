@@ -1,0 +1,42 @@
+@import viewmodels.dlsViewModel
+
+@(yesNoRadioDLSForm : Form[viewmodels.DlsYesNoRadioViewModel],
+        error: Option[String] = None,
+        formData: Option[String] = None
+)(implicit lang: Lang,
+        flash: Flash,
+        session: play.api.mvc.Session,
+        request: Request[AnyContent]
+)
+
+@import views.html.helper._
+@templates.digitalLicence(Messages("driving.licence.photocard.title")) {
+@helpers.backLink()
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <div>
+                <h1 class="heading-large">@Messages("driving.licence.photocard.title")</h1>
+                <p>@Messages("driving.licence.photocard.p1")</p>
+            </div>
+
+            @form(routes.DigitalController.holdPhotoCardPost,
+                'class -> "form",
+                'autocomplete -> "off",
+                'id -> "dlsTermsForm") {
+                @helpers.digitalLicence.radioGroupYesNo(yesNoRadioDLSForm("dlsYesNoRadio"),Messages("driving.licence.terms.title"), Messages("driving.licence.photocard.error"))
+
+
+
+                <div class="form-group">
+                    <input id="submitDls" class="button" name="button" type="submit"
+                    value="Continue"/>
+                </div>
+            </div>
+
+    </div>
+
+
+
+}
+}

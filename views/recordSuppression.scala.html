@@ -1,0 +1,30 @@
+@(error: Option[String] = None,
+        formData: Option[String] = None
+)(implicit lang: Lang,
+        flash: Flash,
+        session: play.api.mvc.Session,
+        request: Request[AnyContent]
+)
+
+@import views.html.helper._
+@templates.digitalLicence(Messages("driving.licence.recordsuppression.title")) {
+
+@helpers.backLink()
+
+    <main id="content" role="main">
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <div class="govuk-box-highlight grey">
+                    <h1 class="heading-large">@Messages("driving.licence.recordsuppression.title")</h1>
+                </div>
+                <p>@Messages("driving.licence.recordsuppression.p1")</p>
+                <h2 class="heading-medium">@Messages("driving.licence.recordsuppression.h2")</h2>
+
+                <div class="contact">
+                @Html(Messages("driving.licence.service.contact"))
+                </div>
+                @Html(Messages("driving.licence.service.return"))
+            </div>
+        </div>
+    </main>
+}

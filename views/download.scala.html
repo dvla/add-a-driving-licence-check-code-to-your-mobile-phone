@@ -1,0 +1,38 @@
+@(error: Option[String] = None,
+        formData: Option[String] = None
+)(implicit lang: Lang,
+        flash: Flash,
+        session: play.api.mvc.Session,
+        request: Request[AnyContent]
+)
+
+@import views.html.helper._
+@templates.digitalLicence(Messages("driving.licence.download.title")) {
+
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @helpers.backLink()
+            <h1 class="heading-large">@Messages("driving.licence.download.title")</h1>
+
+            <form class="form">
+                <div class="form-group">
+                    <p>@Messages("driving.licence.download.p1")</p>
+                    <p>@Messages("driving.licence.download.p2")</p>
+                    <div class="form-group" id="terms-accepted">
+                        <div class="form-group add-to-wallet">
+                            <a class="no-focus" href="/digital/confirmation">
+                                <img id="add-to-apple-wallet" src='@routes.Assets.at("digital-licence/images/add_to_apple_wallet_222x70.png")'/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="column-third need-help-padding">
+            @helpers.digitalLicence.helpContactDetails()
+        </div>
+    </div>
+
+}

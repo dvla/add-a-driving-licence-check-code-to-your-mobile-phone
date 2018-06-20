@@ -1,0 +1,149 @@
+@(yesNoRadioDLSForm: Form[viewmodels.DlsYesNoRadioViewModel],
+        amendDate: org.joda.time.DateTime,
+        error: Option[String] = None,
+        formData: Option[String] = None
+)(implicit lang: Lang,
+        flash: Flash,
+        session: play.api.mvc.Session,
+        request: Request[AnyContent],
+        viewConfig: viewmodels.ViewConfiguration
+)
+@import core.Utils.formatDateWithShortMonth
+@import views.html.helper._
+
+@headParts = {
+    <link rel="manifest" href="/assets/digital-licence/manifests/manifest.json">
+    <link href='@routes.Assets.at("digital-licence/share-pass.css")' media="screen" rel="stylesheet" type="text/css" />
+}
+
+@templates.digitalLicence(Messages("driving.licence.terms.title", Html(""), Html(""), headParts)) {
+
+    <div class="grid-row">
+    <div class="column-two-thirds">
+
+        <h1 class="heading-large">@Messages("driving.licence.terms.title")</h1>
+
+        <p>@Messages("driving.licence.terms.p1")</p>
+        <details>
+            <summary><span class="summary">@Messages("driving.licence.terms.summary")</span></summary>
+
+            <div class="panel panel-border-narrow">
+
+                @Html(Messages("driving.licence.terms.termsandconditions.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.about.title")</h2>
+                @Html(Messages("driving.licence.terms.about.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.conditionsofuse.title")</h2>
+                @Html(Messages("driving.licence.terms.conditionsofuse.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.liability.title")</h2>
+                @Html(Messages("driving.licence.terms.liability.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.security.title")</h2>
+                @Html(Messages("driving.licence.terms.security.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.cookies.title")</h2>
+                @Html(Messages("driving.licence.terms.cookies.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.virus.protection.title")</h2>
+                @Html(Messages("driving.licence.terms.virus.protection.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.viruses.hacking.title")</h2>
+                @Html(Messages("driving.licence.terms.viruses.hacking.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.dpa.title")</h2>
+                @Html(Messages("driving.licence.terms.dpa.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.incidents.title")</h2>
+                @Html(Messages("driving.licence.terms.incidents.p1"))
+                @Html(Messages("driving.licence.terms.incidents.p2"))
+
+                <ul class="list">
+
+                    <li>@Messages("driving.licence.terms.incidents.li1")</li>
+                    <li>@Messages("driving.licence.terms.incidents.li2")</li>
+                    <li>@Messages("driving.licence.terms.incidents.li3")</li>
+
+                </ul>
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.termination.title")</h2>
+                @Html(Messages("driving.licence.terms.termination.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.continuity.title")</h2>
+                @Html(Messages("driving.licence.terms.continuity.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.disclaimer.title")</h2>
+                @Html(Messages("driving.licence.terms.disclaimer.p1"))
+
+                <ul class="list list-bullet">
+
+                    <li>@Messages("driving.licence.terms.disclaimer.li1")</li>
+                    <li>@Messages("driving.licence.terms.disclaimer.li2")</li>
+                    <li>@Messages("driving.licence.terms.disclaimer.li3")</li>
+                    <li>@Messages("driving.licence.terms.disclaimer.li4")</li>
+                    <li>@Messages("driving.licence.terms.disclaimer.li5")</li>
+                    <li>@Messages("driving.licence.terms.disclaimer.li6")</li>
+                    <li>@Messages("driving.licence.terms.disclaimer.li7")</li>
+                    <li>@Messages("driving.licence.terms.disclaimer.li8")</li>
+
+                </ul>
+
+                @Html(Messages("driving.licence.terms.disclaimer.p2"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.copyright.title")</h2>
+                @Html(Messages("driving.licence.terms.copyright.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.changes.title")</h2>
+                @Html(Messages("driving.licence.terms.changes.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.severability.title")</h2>
+                @Html(Messages("driving.licence.terms.severability.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.events.title")</h2>
+                @Html(Messages("driving.licence.terms.events.p1"))
+
+                <h2 class="heading-medium">@Messages("driving.licence.terms.governing.law.title")</h2>
+                @Html(Messages("driving.licence.terms.governing.law.p1"))
+
+                <br>
+
+                <div>
+                    <p class="modified-date">@Html(Messages("views.terms.dateMod.dls"))</p>
+                </div>
+
+            </div>
+        </details>
+
+        @form(routes.DigitalController.termsAndConditionsPost,
+            'class -> "form",
+            'autocomplete -> "off",
+            'id -> "dlsTermsForm") {
+            @helpers.digitalLicence.radioGroupYesNo(yesNoRadioDLSForm("dlsYesNoRadio"), Messages("driving.licence.terms.title"), Messages("driving.licence.terms.error"))
+
+            <div class="form-group">
+                <input id="submitDls" class="button" name="button" type="submit"
+                value="Continue"/>
+            </div>
+        }
+    </div>
+
+        <div class="column-third need-help-padding">
+            @helpers.digitalLicence.helpContactDetails()
+        </div>
+
+    </div>
+
+
+    <script>
+        //add service worker here so fetch event gets triggered on confirmation page and caches all http requests needed
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker
+                        .register('/digital/pwa/sw.js')
+                        .then(function () {
+                            console.log("Service Worker Registered");
+                        });
+            }
+    </script>
+
+}

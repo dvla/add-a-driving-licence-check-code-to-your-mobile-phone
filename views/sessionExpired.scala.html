@@ -1,0 +1,28 @@
+@(error: Option[String] = None,
+formData: Option[String] = None
+)(implicit lang: Lang,
+flash: Flash,
+session: play.api.mvc.Session,
+request: Request[AnyContent]
+)
+
+@import views.html.helper._
+@templates.digitalLicence(Messages("digital.licence.timeout.title")) {
+
+@helpers.backLink()
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+        <div class="govuk-box-highlight grey">
+            <h1 class="heading-large">@Messages("digital.licence.timeout.title")</h1>
+        </div>
+
+        <p>@Messages("digital.licence.timeout.p1")</p>
+        <p>@Messages("digital.licence.timeout.p2")</p>
+
+        <a href="https://www.gov.uk/" class="button">Return to GOV.UK</a>
+
+    </div>
+</div>
+
+}

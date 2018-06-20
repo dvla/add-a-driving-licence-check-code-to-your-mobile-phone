@@ -1,0 +1,28 @@
+@(error: Option[String] = None,
+formData: Option[String] = None
+)(implicit lang: Lang,
+flash: Flash,
+session: play.api.mvc.Session,
+request: Request[AnyContent]
+)
+
+@import views.html.helper._
+@templates.digitalLicence(Messages("driving.licence.sharelicenceerror.title")) {
+
+@helpers.backLink()
+
+<div class="text">
+
+            <h2 class="heading-large">@Messages("driving.licence.sharelicenceerror.title")</h2>
+                <div>
+                    <p>@Messages("driving.licence.sharelicenceerror.p1")</p>
+
+                </div>
+            <br>
+
+
+    <div>
+        <a href="https://www.gov.uk">@Messages("driving.licence.devices.exit.link")</a>
+    </div>
+</div>
+}

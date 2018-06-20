@@ -1,0 +1,12 @@
+@(errorHeaderMessage: String, errorMessage: String, path: String)(implicit request: RequestHeader, lang: Lang)
+
+@templates.digitalLicence(Messages(errorHeaderMessage)) {
+
+@helpers.backLink()
+
+<div class="text">
+    <h1 class="heading-xlarge">@Html(Messages(errorHeaderMessage))</h1>
+    <p class="text">@Html(Messages(errorMessage))</p>
+</div>
+
+}

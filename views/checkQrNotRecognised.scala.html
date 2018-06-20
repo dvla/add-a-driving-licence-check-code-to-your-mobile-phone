@@ -1,0 +1,20 @@
+@()(implicit request: RequestHeader, lang: Lang)
+
+@templates.sml(routes.Application.cookies("cdl").toString, Messages("views.sml.authentication.banner.title")) {
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div class="govuk-box-highlight grey">
+        <h1 class="heading-large">@Messages("views.sml.scanqrcode.notrecognisedqr.h1")</h1>
+      </div>
+
+      <h2 class="heading-medium">@Messages("views.sml.scanqrcode.notrecognisedqr.h2")</h2>
+
+      <p>@Messages("views.sml.scanqrcode.notrecognisedqr.p1")</p>
+      <p>@Html(Messages("views.sml.scanqrcode.notrecognisedqr.p2"))</p>
+
+      @Html(Messages("views.sml.scanqrcode.notrecognisedqr.button"))
+
+    </div>
+  </div>
+}

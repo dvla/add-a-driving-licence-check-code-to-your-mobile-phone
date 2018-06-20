@@ -1,0 +1,27 @@
+@(error: Option[String] = None,
+formData: Option[String] = None
+)(implicit lang: Lang,
+flash: Flash,
+session: play.api.mvc.Session,
+request: Request[AnyContent]
+)
+
+@import views.html.helper._
+@templates.digitalLicence(Messages("driving.licence.tokencreationerror.title")) {
+
+@helpers.backLink()
+
+<div class="text">
+
+            <h1 class="heading-large">@Messages("driving.licence.tokencreationerror.title")</h1>
+                <div>
+                    <p>@Messages("driving.licence.tokencreationerror.p1")</p>
+                </div>
+            <br>
+
+
+    <div>
+        <a href="https://www.gov.uk">@Messages("driving.licence.devices.exit.link")</a>
+    </div>
+</div>
+}

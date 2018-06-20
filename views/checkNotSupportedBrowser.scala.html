@@ -1,0 +1,25 @@
+@()(implicit request: RequestHeader, lang: Lang)
+
+@templates.sml(routes.Application.cookies("cdl").toString, Messages("views.sml.authentication.banner.title")) {
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <div class="govuk-box-highlight grey">
+                <h1 class="heading-large">@Messages("Not supported browser")</h1><!-- //TODO need to fix this-->
+            </div>
+
+
+
+            <h2 class="heading-medium">@Messages("views.sml.scanqrcode.nocamera.h2")</h2>
+            <ul class="list-bullet">
+                <li>@Messages("views.sml.scanqrcode.nocamera.li1")</li>
+                <li>@Messages("views.sml.scanqrcode.nocamera.li2")</li>
+            </ul>
+            <p>@Messages("views.sml.scanqrcode.expired.p2")</p>
+            <p>@Html(Messages("views.sml.scanqrcode.expired.p3"))</p>
+
+            @Html(Messages("driving.licence.service.return"))
+
+        </div>
+    </div>
+}

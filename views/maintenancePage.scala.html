@@ -1,0 +1,18 @@
+@(maintenanceCode: String, maintenanceTime: String)(implicit request: RequestHeader, lang: Lang)
+
+@templates.digitalLicence(Messages("driving.licence.maintenance.title")) {
+
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <div class="govuk-box-highlight grey">
+                    <h1 class="heading-large">@Messages("driving.licence.maintenance.title")</h1>
+                </div>
+                <p>@Messages(maintenanceCode + ".p1")</p>
+                <p>@Messages(maintenanceCode + ".p2")@maintenanceTime</p>
+                <p>@Html(Messages(maintenanceCode + ".p3"))</p>
+                <p>@Messages("driving.licence.maintenance.p4")</p>
+            <br>
+                @Html(Messages("driving.licence.service.return"))
+            </div>
+        </div>
+}

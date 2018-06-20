@@ -1,0 +1,31 @@
+@(error: Option[String] = None,
+formData: Option[String] = None
+)(implicit lang: Lang,
+flash: Flash,
+session: play.api.mvc.Session,
+request: Request[AnyContent]
+)
+
+@import views.html.helper._
+@templates.digitalLicence(Messages("driving.licence.nophotocard.title")) {
+
+@helpers.backLink()
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+        <div class="govuk-box-highlight grey">
+            <h1 class="heading-large">@Messages("driving.licence.nophotocard.title")</h1>
+        </div>
+
+        <p>@Messages("driving.licence.nophotocard.p1")</p>
+        <p>@Messages("driving.licence.nophotocard.p2")</p>
+
+        <h2 class="heading-medium">@Messages("driving.licence.nophotocard.h2")</h2>
+        <p>@Html(Messages("driving.licence.nophotocard.p3"))</p>
+
+        <a href="https://www.gov.uk/" class="button">Return to GOV.UK</a>
+
+    </div>
+</div>
+
+}

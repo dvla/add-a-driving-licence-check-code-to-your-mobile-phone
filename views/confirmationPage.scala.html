@@ -1,0 +1,35 @@
+@(error: Option[String] = None,
+formData: Option[String] = None
+)(implicit lang: Lang,
+flash: Flash,
+session: play.api.mvc.Session,
+request: Request[AnyContent]
+)
+
+@import views.html.helper._
+
+@headParts={
+<meta http-equiv="refresh" content="0; URL=/digital/download-pass">
+}
+
+@templates.digitalLicence(Messages("driving.licence.confirmation.title"), headParts) {
+
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+        <div class="govuk-box-highlight green">
+            <h1 class="heading-large">@Messages("driving.licence.confirmation.title")</h1>
+        </div>
+
+        <p>@Messages("driving.licence.confirmation.p1")</p>
+        <p>@Messages("driving.licence.confirmation.p2")</p>
+
+
+        <p><a href="shoebox://" class="button">@Messages("driving.licence.confirmation.appleWalletLink")</a></p>
+        <p><a href="https://www.gov.uk">Return to GOV.UK</a></p>
+    </div>
+
+</div>
+
+
+}

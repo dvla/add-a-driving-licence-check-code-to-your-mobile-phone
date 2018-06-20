@@ -1,0 +1,16 @@
+{
+  "short_name": "Digital Licence Pass",
+  "name": "Digital Licence Pass",
+  "icons": [
+    {
+      "src":"/assets/digital-licence/images/dlsapp-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "start_url": "/digital/pwa/confirmation",
+  "background_color": "#000",
+  "theme_color": "#000",
+  "display": "standalone"
+}

@@ -1,0 +1,59 @@
+@import viewmodels.dlsViewModel
+
+@(yesNoRadioDLSForm: Form[viewmodels.DlsYesNoRadioViewModel],
+        error: Option[String] = None,
+        formData: Option[String] = None
+)(implicit lang: Lang,
+        flash: Flash,
+        session: play.api.mvc.Session,
+        request: Request[AnyContent]
+)
+
+@import views.html.helper._
+@templates.digitalLicence(Messages("driving.licence.hold.licence.h1")) {
+    @helpers.backLink()
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <div>
+                <h1 class="heading-large">@Messages("driving.licence.hold.licence.h1")</h1>
+            </div>
+            <p>@Messages("driving.licence.hold.licence.p1")</p>
+
+            @form(routes.DigitalController.holdLicencePost,
+                'class -> "form",
+                'autocomplete -> "off",
+                'id -> "dlsTermsForm") {
+                @helpers.digitalLicence.radioGroupYesNo(yesNoRadioDLSForm("dlsYesNoRadio"), Messages("driving.licence.hold.licence.title"), Messages("driving.licence.hold.licence.error"))
+
+                <div class="form-group">
+                    <input id="submitDls" class="button" name="button" type="submit"
+                    value="Continue"/>
+                </div>
+            </div>
+
+    </div>
+}
+    <script>
+            //delete caches and unregister the service worker as user is creating a new pass
+            caches.keys().then(function (cachesNames) {
+                console.log("Delete " + document.defaultView.location.origin + " caches");
+                return Promise.all(cachesNames.map(function (cacheName) {
+                    return caches.delete(cacheName).then(function () {
+                        console.log("Cache with name " + cacheName + " is deleted");
+                    });
+                }))
+            }).then(function () {
+                console.log("All " + document.defaultView.location.origin + " caches are deleted");
+            });
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                    for(let registration of registrations) {
+                        console.log("Serice worker  " + registration + " is unregistered");
+                        registration.unregister();
+                    } });
+
+            }
+    </script>
+}

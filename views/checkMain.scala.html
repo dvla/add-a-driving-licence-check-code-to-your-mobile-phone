@@ -1,0 +1,95 @@
+@(smlVerifyForm: Form[viewmodels.ValidateLicenceViewModel],
+        error: Option[String] = None
+)(implicit request: RequestHeader, lang: Lang)
+
+@import views.html.helper._
+@import core.Utils.{getConfigStringEx => config}
+<script type="text/javascript" src='@routes.Assets.at("digital-licence/javascripts/qr/llqrcode.js")'></script>
+<script type="text/javascript" src='@routes.Assets.at("digital-licence/javascripts/qr/webqr.js")'></script>
+@scripts={
+    <script data-main='@routes.Assets.at("javascripts/main.js")' type="text/javascript" src='@routes.Assets.at("lib/requirejs/require.js")'></script>
+    <script src='@routes.Scripts.script("smlAuthenticationScript.js", lang.code)'></script>
+    <script src='@routes.Assets.at("javascripts/jquery.placeholder.js")'></script>
+    <script>$('input').placeholder();</script>
+    <script type="text/javascript" src="@routes.Assets.at("digital-licence/javascripts/qr/DetectRTC.min.js")"></script>
+
+    <script>
+            $(document).ready(function(){
+
+                    if(DetectRTC.isWebRTCSupported === false){
+                        $('#show-when-unsupported-browser').show();
+                    }
+                    else{
+                        $('#show-when-javascript-on').show();
+                    }});
+    </script>
+
+}
+
+@templates.sml(routes.Application.cookies("cdl").toString, Messages("views.sml.authentication.banner.title"), scripts) {
+    <div class="grid-row">
+
+        <div class="column-one-half">
+
+            <h1 class="heading-large" style="margin-top: 1.7em; padding-top: 0em;">@Messages("views.sml.authentication.form.title")</h1>
+            <form action='/digital/validate' method="POST" id="verifyLicenceForm" autocomplete="off">
+                @error.map { msg =>
+                    <div class="error-summary" id="validationSummary2"><p>@Messages(msg)</p></div>
+                }
+                @security.honeyPotField()
+                <div class="form-group">
+                    @helpers.digitalLicence.inputDocRefValidation(smlVerifyForm("docRef"))
+                    @helpers.digitalLicence.inputAccessToken(smlVerifyForm("accessToken"))
+                </div>
+                <p>@Html(Messages("views.sml.authentication.intro",
+                    routes.ValidateLicenceController.termsAndConditions()))</p>
+
+                <input type="submit" id="submitaccessToken" class="button" value='@Messages("views.sml.authentication.submit")'/>
+
+            </form>
+        </div>
+
+        <div class="column-one-half">
+
+            <div class="panel panel-border-narrow" style="padding: 0 0 0 2em;">
+                <h2 class="heading-large" style="margin-top: 2.7em; padding-top: 0em;">@Messages("views.sml.authentication.scan.title")</h2>
+
+                <noscript>
+                    <div class="govuk-box-highlight grey">
+                        <h1 class="heading-medium" >@Messages("views.sml.checkmain.javascript.off.h1")</h1>
+                    </div>
+                    <p>@Messages("views.sml.checkmain.javascript.off.p1")</p>
+                </noscript>
+
+                <div id="show-when-unsupported-browser" hidden>
+                    <div class="govuk-box-highlight grey">
+                        <h1 class="heading-medium" >@Messages("views.sml.checkmain.unsupported.browser.h1")</h1>
+                    </div>
+
+                    <p>@Messages("views.sml.checkmain.unsupported.browser.p1")</p>
+                </div>
+
+                <div id="show-when-javascript-on" hidden>
+                <p class="form-hint">@Messages("views.sml.authentication.scan.requirements")</p>
+                <img  alt="Mobile phone showing a QR code" src="@routes.Assets.at("img/iphone-qr-code.png")" width="200px" height="219px">
+                <details style="margin-bottom: 0;" role="group">
+                    <summary role="button" aria-controls="details-content-2" aria-expanded="false"><span class="summary">@Messages("views.sml.authentication.scan.question")</span></summary>
+                    <div class="panel panel-border-narrow" id="details-content-2" aria-hidden="true">
+                        <p>@Messages("views.sml.authentication.scan.p1")</p>
+                        <p>@Html(Messages("views.sml.authentication.scan.p2"))</p>
+                    </div>
+                </details>
+
+
+                <div class="form-group" style="margin:10px;">
+                    <a class="button" href="@routes.DigitalController.checkQr()">@Messages("views.sml.authentication.scan.button")</a>
+                </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+}

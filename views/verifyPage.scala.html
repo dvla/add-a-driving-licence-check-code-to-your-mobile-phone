@@ -1,0 +1,56 @@
+@(error: Option[String] = None,
+formData: Option[String] = None
+)(implicit lang: Lang,
+flash: Flash,
+session: play.api.mvc.Session,
+request: Request[AnyContent]
+)
+
+@import views.html.helper._
+
+
+@templates.digitalLicence(Messages("driving.licence.verify-pre.title")) {
+
+@helpers.backLink()
+
+<div class="text">
+
+            <h1 class="heading-large">@Messages("driving.licence.verify-pre.title")</h1>
+
+            <h2 class="heading-medium">@Messages("driving.licence.verify-pre.verify.title")</h2>
+
+            <p>@Messages("driving.licence.verify-pre.p1")</p>
+
+            <p>@Messages("driving.licence.verify-pre.p2")</p>
+
+    <details>
+
+        <summary><span class="summary">@Messages("driving.licence.verify-pre.details.summary")</span></summary>
+
+        <div class="panel panel-border-narrow">
+
+            <ul class="list list-bullet">
+                <li>@Messages("driving.licence.verify-pre.details.list.item1")</li>
+                <li>@Messages("driving.licence.verify-pre.details.list.item2")</li>
+                <li>@Messages("driving.licence.verify-pre.details.list.item3")</li>
+            </ul>
+            <p>@Messages("driving.licence.verify-pre.details.p1")</p>
+
+        </div>
+
+    </details>
+
+            <h2 class="heading-medium">@Messages("driving.licence.verify-pre.addpass.title")</h2>
+            <p>@Messages("driving.licence.verify-pre.addpass.p1")</p>
+
+            <p><img alt="Mobile phone showing a QR code" src="@routes.Assets.at("digital-licence/images/iphone-qr-code.png")" width="200px" height="219px"></p>
+            <p>@Messages("driving.licence.verify-pre.addpass.p2")</p>
+
+            <img alt="GOV.UK Verify image" src="/assets/images/govuk-verify-mono.png" style="width: 25%; padding-bottom: 20px;" />
+
+            <div id="get-started" class="form-group get-started group">
+                <a class="button button-start" href=@play.Play.application().configuration().getString("verifyURL") role="button">@Messages("driving.licence.verify-pre.button")</a>
+            </div>
+        </div>
+
+}

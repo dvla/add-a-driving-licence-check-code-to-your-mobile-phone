@@ -1,0 +1,100 @@
+@import core.ShareLicenceFeature.{isEnabled => isShareEnabled}
+@import core.Utils.formatDateWithShortMonth
+
+@(amendDate : org.joda.time.DateTime)(implicit request: RequestHeader, lang: Lang)
+
+@import views.html.helper._
+@templates.digitalLicence(Messages("driving.licence.privacypolicy.title")) {
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+        <h1 class="heading-xlarge">@Html(Messages("driving.licence.privacypolicy.title"))</h1>
+
+        <h2 class="heading-large">@Messages("driving.licence.privacypolicy.general.title")</h2>
+        @Html(Messages("driving.licence.privacypolicy.general.p1"))
+        <ul class="list">
+            @Html(Messages("driving.licence.privacypolicy.general.li1"))
+        </ul>
+        @Html(Messages("driving.licence.privacypolicy.general.p2"))
+
+        <h2 class="heading-large">@Html(Messages("driving.licence.privacypolicy.overview.title"))</h2>
+        @Html(Messages("driving.licence.privacypolicy.overview.p1"))
+        <ul class="list list-bullet">
+            @Html(Messages("driving.licence.privacypolicy.overview.li1"))
+        </ul>
+        @Html(Messages("driving.licence.privacypolicy.overview.p2"))
+        <ul class="list list-bullet">
+            @Html(Messages("driving.licence.privacypolicy.overview.li2"))
+        </ul>
+        @Html(Messages("driving.licence.privacypolicy.overview.p3"))
+
+        <h2 class="heading-large">@Messages("driving.licence.privacypolicy.information.title")</h2>
+        @Html(Messages("driving.licence.privacypolicy.information.p1"))
+
+
+        <h2 class="heading-large">@Messages("driving.licence.privacypolicy.security.title")</h2>
+        @Html(Messages("driving.licence.privacypolicy.security.p1"))
+        <ul class="list list-bullet">
+            @Html(Messages("driving.licence.privacypolicy.security.li1"))
+        </ul>
+        @Html(Messages("driving.licence.privacypolicy.security.p2"))
+
+        <h2 class="heading-large">@Messages("driving.licence.privacypolicy.rights.title")</h2>
+        @Html(Messages("driving.licence.privacypolicy.rights.p1"))
+        @Html(Messages("driving.licence.privacypolicy.rights.p2"))
+        @Html(Messages("driving.licence.privacypolicy.rights.p3"))
+        @Html(Messages("driving.licence.privacypolicy.rights.p4"))
+        @Html(Messages("driving.licence.privacypolicy.rights.p5"))
+        @Html(Messages("driving.licence.privacypolicy.rights.p6"))
+        <ul class="list list-bullet">
+            @Html(Messages("driving.licence.privacypolicy.rights.li"))
+        </ul>
+        @Html(Messages("driving.licence.privacypolicy.rights.p7"))
+        <ul class="list list-bullet">
+            @Html(Messages("driving.licence.privacypolicy.rights.li2"))
+        </ul>
+
+        <h2 class="heading-large">@Messages("driving.licence.privacypolicy.info.title")</h2>
+        @Html(Messages("driving.licence.privacypolicy.info.p1"))
+        <ul class="list">
+            @Html(Messages("driving.licence.privacypolicy.info.li"))
+        </ul>
+        @Html(Messages("driving.licence.privacypolicy.info.p2"))
+        @Html(Messages("driving.licence.privacypolicy.info.p3"))
+        @Html(Messages("driving.licence.privacypolicy.info.p4"))
+        <ul class="list list-bullet">
+            @Html(Messages("driving.licence.privacypolicy.info.li2"))
+        </ul>
+        @Html(Messages("driving.licence.privacypolicy.info.p5"))
+        @Html(Messages("driving.licence.privacypolicy.info.p6"))
+        @Html(Messages("driving.licence.privacypolicy.info.p7"))
+
+
+        <h2 class="heading-large">@Messages("driving.licence.privacypolicy.it.title")</h2>
+        @Html(Messages("driving.licence.privacypolicy.it.p1"))
+
+
+        <h2 class="heading-large">@Messages("driving.licence.privacypolicy.legalprocessing.title")</h2>
+        @Html(Messages("driving.licence.privacypolicy.legalprocessing.p1"))
+
+        <h2 class="heading-large">@Messages("driving.licence.privacypolicy.retention.title")</h2>
+        @Html(Messages("driving.licence.privacypolicy.retention.p1"))
+
+        <h2 class="heading-large">@Messages("driving.licence.privacypolicy.monitoring.title")</h2>
+        @Html(Messages("driving.licence.privacypolicy.monitoring.p1"))
+
+        <h2 class="heading-large">@Messages("driving.licence.privacypolicy.complaints.title")</h2>
+        @Html(Messages("driving.licence.privacypolicy.complaints.p1"))
+
+        <h2 class="heading-large">@Messages("driving.licence.privacypolicy.changes.title")</h2>
+        @Html(Messages("driving.licence.privacypolicy.changes.p1"))
+
+        <br>
+
+        <div>
+            <p>@Html(Messages("driving.licence.privacypolicy.datemod"))</p>
+        </div>
+    </div>
+</div>
+
+}

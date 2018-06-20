@@ -1,0 +1,68 @@
+@(sharePassViewModel: viewmodels.SharePassViewModel)(implicit lang: Lang,
+        flash: Flash,
+        session: play.api.mvc.Session,
+        request: Request[AnyContent]
+)
+
+@headParts = {
+    <link rel="manifest" href="/assets/digital-licence/manifests/manifest.json">
+    <link href='@routes.Assets.at("digital-licence/stylesheets/font-awesome-core.css")' media="screen" rel="stylesheet" type="text/css" />
+    <link href='@routes.Assets.at("digital-licence/stylesheets/font-awesome-regular.css")' media="screen" rel="stylesheet" type="text/css" />
+    <link href='@routes.Assets.at("digital-licence/share-pass.css")' media="screen" rel="stylesheet" type="text/css" />
+}
+
+@templates.digitalLicence(Messages("driving.licence.pwa.confirmation.title"), Html(""), Html(""), headParts) {
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+            <div class="govuk-box-highlight">
+                <h2 class="heading-large">
+                @Messages("driving.licence.pwa.confirmation.title")
+                </h2>
+            </div>
+
+
+            <div id="addToHome" style="margin-top: 1.5em;
+                text-align: left;">
+                <p>@Messages("driving.licence.pwa.confirmation.p1")</p>
+                <details class="android">
+                    <summary><span class="summary">@Messages("driving.licence.pwa.confirmation.summary")</span></summary>
+                    <div class="panel panel-border-narrow">
+                        <ol class="list example-icon-list">
+                            <li><i class="icon icon-step-1"></i>
+                                <p>@Html(Messages("driving.licence.pwa.confirmation.summary.list.item1"))</p>
+                            </li>
+                            <li><i class="icon icon-step-2"></i>
+                                <p>@Html(Messages("driving.licence.pwa.confirmation.summary.list.item2"))</p>
+                            </li>
+                            <li><i class="icon icon-step-3"></i>
+                                <p>@Messages("driving.licence.pwa.confirmation.summary.list.item3")</p>
+                            </li>
+                        </ol>
+                    </div>
+                </details>
+                <details class="apple">
+                    <summary><span class="summary">@Messages("driving.licence.pwa.confirmation.summary")</span></summary>
+                    <div class="panel panel-border-narrow">
+                        <ol class="list example-icon-list">
+                            <li><i class="icon icon-step-1"></i>
+                                <p>@Html(Messages("driving.licence.pwa.confirmation.summary.list.item1.apple"))</p>
+                            </li>
+                            <li><i class="icon icon-step-2"></i>
+                                <p>@Html(Messages("driving.licence.pwa.confirmation.summary.list.item2"))</p>
+                            </li>
+                            <li><i class="icon icon-step-3"></i>
+                                <p>@Messages("driving.licence.pwa.confirmation.summary.list.item3")</p>
+                            </li>
+                        </ol>
+                    </div>
+                </details>
+
+            </div>
+            @helpers.digitalLicence.sharePass(sharePassViewModel)
+        </div>
+    </div>
+
+
+}

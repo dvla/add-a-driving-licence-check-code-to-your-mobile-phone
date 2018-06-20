@@ -1,0 +1,23 @@
+@(error: Option[String] = None,
+        formData: Option[String] = None
+)(implicit lang: Lang,
+        flash: Flash,
+        session: play.api.mvc.Session,
+        request: Request[AnyContent]
+)
+
+@templates.digitalLicence(Messages("driving.licence.must.hold.title")) {
+@helpers.backLink()
+
+    <main id="content" role="main">
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <div class="govuk-box-highlight grey">
+                    <h1 class="heading-large">@Messages("driving.licence.must.hold.title")</h1>
+                </div>
+                <p>@Html(Messages("driving.licence.must.hold.p1"))</p>
+                @Html(Messages("driving.licence.service.return"))
+            </div>
+        </div>
+    </main>
+}

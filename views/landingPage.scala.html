@@ -1,0 +1,58 @@
+@(error: Option[String] = None,
+formData: Option[String] = None
+)(implicit lang: Lang,
+flash: Flash,
+session: play.api.mvc.Session,
+request: Request[AnyContent]
+)
+
+@import views.html.helper._
+@templates.digitalLicence(Messages("driving.licence.landing.heading")) {
+
+    <div class="breadcrumbs">
+        <ol>
+            <li><a href="https://www.gov.uk/">Home</a></li>
+            <li><a href="https://www.gov.uk/browse/driving">Driving and transport</a></li>
+            <li><strong><a href="https://www.gov.uk/browse/driving/driving-licences">Driving licences</a></strong></li>
+        </ol>
+    </div>
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-xlarge">@Messages("driving.licence.landing.heading")</h1>
+
+            <p class="margin-bottom-0">@Messages("driving.licence.landing.p1")</p>
+
+            <ul class="list list-bullet">
+                <li>@Messages("driving.licence.landing.li1")</li>
+                <li>@Messages("driving.licence.landing.li2")</li>
+            </ul>
+
+            <p>@Messages("driving.licence.landing.p2")</p>
+
+
+            <a class="button button-start" href="@routes.DigitalController.holdLicence()" role="button">@Messages("driving.licence.landing.button.start")</a>
+
+            <br><br>
+
+            <p class="modified-date form-hint">@Messages("driving.licence.landing.lastUpdated")</p>
+        </div>
+
+        <div class="column-one-third">
+            <h2 class="heading-medium">@Messages("driving.licence.landing.side.heading")</h2>
+            <ul class="list">
+                <li><a href="https://www.gov.uk/change-address-driving-licence">@Messages("driving.licence.landing.side.link1")</a></li>
+                <li><a href="https://www.gov.uk/contact-the-dvla">@Messages("driving.licence.landing.side.link2")</a></li>
+                <li><a href="https://www.gov.uk/driving-licence-categories">@Messages("driving.licence.landing.side.link3")</a></li>
+                <li><a href="https://www.gov.uk/driving-licence-codes">@Messages("driving.licence.landing.side.link4")</a></li>
+            </ul>
+
+            <h2 class="heading-medium">@Messages("driving.licence.landing.side.link5")</h2>
+            <ul class="list">
+                <li><a href="https://www.gov.uk/vehicle-tax-rate-tables">@Messages("driving.licence.landing.side.link6")</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+}

@@ -1,0 +1,42 @@
+@(error: Option[String] = None)(implicit request: RequestHeader, lang: Lang)
+
+@scripts = {
+    <script type="text/javascript" src='@routes.Assets.at("digital-licence/javascripts/qr/llqrcode.js")'></script>
+    <script type="text/javascript" src='@routes.Assets.at("digital-licence/javascripts/qr/webqr.js")'></script>
+    <script data-main='@routes.Assets.at("javascripts/main.js")' type="text/javascript" src='@routes.Assets.at("lib/requirejs/require.js")'></script>
+    <script src='@routes.Scripts.script("smlAuthenticationScript.js", lang.code)'></script>
+    <script src='@routes.Assets.at("javascripts/jquery.placeholder.js")'></script>
+    <script type="text/javascript" src="@routes.Assets.at("digital-licence/javascripts/qr/DetectRTC.min.js")"></script>
+}
+
+@templates.sml(routes.Application.cookies("cdl").toString, Messages("views.sml.authentication.banner.title"), scripts) {
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            @helpers.backLink()
+            <div class="hgroup">
+                <h1 class="heading-large">@Messages("views.sml.scanqrcode.title")</h1>
+                <p id="result">@Messages("views.sml.authentication.scan.info")</p>
+            </div>
+
+            <div id="mainbody" >
+                @error.map { msg =>
+                    <div class="error-summary" id="validationSummary2"><p>@Messages(msg)</p></div>
+                }
+                <audio id="barcode" >
+                    <source src="@routes.Assets.at("/img/BarcodeBeep.mp3")" type="audio/mpeg">
+                </audio>
+
+                <canvas id="qr-canvas"></canvas>
+
+                <div id="outdiv"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+            $(document).ready(function () {
+                load();
+            });
+    </script>
+
+}
